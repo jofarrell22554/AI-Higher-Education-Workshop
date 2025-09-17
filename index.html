@@ -1,40 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My AI-Generated Website</title>
-    <style>
-        /* Your CSS styles go here */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MBA 5xx: Introduction to Business Administration — Prof. Jim O'Farrell</title>
+  <meta name="description" content="Course website for MBA Introduction course taught by Professor Jim O'Farrell." />
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --panel: #111218;
+      --ink: #eaf0f7;
+      --muted: #c7d0da;
+      --accent: #7c9cff;
+      --accent-2: #31c48d;
+      --shadow: rgba(0,0,0,.25);
+      --radius: 16px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg: #f8fafc; --panel: #ffffff; --ink: #0b1220; --muted: #586174; --shadow: rgba(0,0,0,.08); }
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--ink);
+      background: radial-gradient(1000px 600px at 90% -10%, rgba(124,156,255,.20), transparent),
+                  radial-gradient(1000px 600px at -10% 100%, rgba(49,196,141,.20), transparent), var(--bg);
+      line-height: 1.6;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px 80px; }
+    header.hero {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items: center;
+      padding: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)) , var(--panel);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      box-shadow: 0 20px 50px var(--shadow);
+    }
+    @media (max-width: 840px){ header.hero { grid-template-columns: 1fr; } }
+    h1 {
+      font-size: clamp(28px, 2.6vw + 14px, 48px);
+      line-height: 1.1;
+      margin: 0 0 8px;
+      letter-spacing: -0.02em;
+    }
+    .sub { color: var(--muted); margin: 0 0 18px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 12px; border-radius: 999px; background: rgba(124,156,255,.12);
+      color: var(--ink); border: 1px solid rgba(124,156,255,.35); font-weight: 600; font-size: 14px;
+    }
+    .grid { display: grid; gap: 20px; }
+    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 900px){ .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; } }
+    .card { background: var(--panel); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); box-shadow: 0 10px 30px var(--shadow); padding: 22px; }
+    .card h3 { margin-top: 0; letter-spacing: -0.01em; }
+    .muted { color: var(--muted); }
+    .inline-kv { display: grid; grid-template-columns: 160px 1fr; gap: 8px 12px; align-items: start; }
+    .inline-kv b { color: var(--ink); font-weight: 700; }
+    .tag { background: rgba(49,196,141,.14); color: var(--ink); border: 1px solid rgba(49,196,141,.35); padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 12px 10px; border-bottom: 1px dashed rgba(255,255,255,.12); }
+    th { font-size: 14px; color: var(--muted); font-weight: 600; }
+    .pillbar { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0 0; }
+    .notice { border-left: 4px solid var(--accent); padding: 14px 16px; background: rgba(124,156,255,.10); border-radius: 10px; }
+    footer { margin-top: 40px; color: var(--muted); font-size: 14px; text-align: center; }
+
+    /* Print-friendly */
+    @media print {
+      body { background: #fff; color: #000; }
+      header.hero, .card { box-shadow: none; background: #fff; border: 1px solid #ddd; }
+      a { color: #0645ad; text-decoration: underline; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to My Website</h1>
-        <p>This is my AI-generated website hosted on GitHub Pages!</p>
-        <button onclick="showMessage()">Click Me!</button>
-        <div id="message"></div>
-    </div>
+  <div class="container">
+    <header class="hero" role="banner">
+      <div>
+        <span class="chip" aria-label="Course code and term">MBA 5xx • Introduction to Business Administration</span>
+        <h1>Welcome to the MBA Introduction Course</h1>
+        <p class="sub">Taught by <strong>Professor Jim O'Farrell</strong> — a practical, data‑informed survey of the modern enterprise: strategy, markets, operations, finance, and leadership.</p>
+        <div class="pillbar" aria-label="Key highlights">
+          <span class="tag">Case‑based</span>
+          <span class="tag">Hands‑on analytics</span>
+          <span class="tag">Team projects</span>
+          <span class="tag">Executive speakers</span>
+        </div>
+      </div>
+      <div class="card" aria-labelledby="contactTitle">
+        <h3 id="contactTitle">Instructor & Logistics</h3>
+        <div class="inline-kv">
+          <b>Instructor</b> <span>Prof. Jim O'Farrell</span>
+          <b>Email</b> <span><a href="mailto:jim.ofarrell@example.edu">jim.ofarrell@example.edu</a></span>
+          <b>Office Hours</b> <span>Wednesdays 2:00–4:00 PM or by appointment (Room 412 / Zoom)</span>
+          <b>Class Time</b> <span>Tuesdays 6:00–8:40 PM (Hybrid)</span>
+          <b>Location</b> <span>Building A, Room 210 + Zoom</span>
+          <b>Course Site</b> <span><a href="#" aria-label="Learning management system link">LMS ▸</a></span>
+        </div>
+      </div>
+    </header>
 
-    <script>
-        // Your JavaScript code goes here
-        function showMessage() {
-            document.getElementById('message').innerHTML = 
-                '<p>Hello from embedded JavaScript!</p>';
-        }
-    </script>
+    <main id="content" class="grid cols-3" role="main" aria-live="polite">
+
+      <section class="card" aria-labelledby="overviewTitle">
+        <h3 id="overviewTitle">Course Overview</h3>
+        <p>This course equips you with a cross‑functional understanding of how organizations create value. You will analyze cases, practice data‑driven decision making, and collaborate on a capstone project that integrates strategy, marketing, operations, and finance.
+        </p>
+        <ul>
+          <li>Blend qualitative frameworks with quantitative analysis.</li>
+          <li>Translate insights into executive‑level recommendations.</li>
+          <li>Build leadership skills through structured team collaboration.</li>
+        </ul>
+        <div class="notice" role="note">
+          <strong>Tip:</strong> Skim the case before class; re‑read with the week’s frameworks to prepare for discussion.
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="outcomesTitle">
+        <h3 id="outcomesTitle">Learning Outcomes</h3>
+        <ol>
+          <li>Diagnose business problems using strategy, marketing, ops, and finance lenses.</li>
+          <li>Apply basic analytics (descriptive, diagnostic) to support decisions.</li>
+          <li>Communicate recommendations clearly to executive stakeholders.</li>
+          <li>Collaborate effectively in diverse teams using project best practices.</li>
+          <li>Reflect on ethical, global, and sustainability considerations in decisions.</li>
+        </ol>
+      </section>
+
+      <section class="card" aria-labelledby="materialsTitle">
+        <h3 id="materialsTitle">Materials & Tools</h3>
+        <ul>
+          <li>Cases & readings (posted weekly on the LMS)</li>
+          <li>Spreadsheet & data viz tools (Excel, Tableau/Power BI optional)</li>
+          <li>Calculator; note‑taking app; reliable internet</li>
+          <li>Recommended text: <em>Strategy + Analytics: A Manager’s Toolkit</em></li>
+        </ul>
+      </section>
+
+      <section class="card" aria-labelledby="scheduleTitle">
+        <h3 id="scheduleTitle">Weekly Schedule (10 Weeks)</h3>
+        <table role="table" aria-describedby="scheduleTitle">
+          <thead><tr><th>Week</th><th>Topic</th><th>Case/Activity</th><th>Due</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Intro & Value Creation</td><td>Mini‑case: Market Entry</td><td>Syllabus quiz</td></tr>
+            <tr><td>2</td><td>Strategy Foundations</td><td>Case: Industry Analysis</td><td>Memo #1</td></tr>
+            <tr><td>3</td><td>Customers & Positioning</td><td>Segmentation workshop</td><td>Memo #2</td></tr>
+            <tr><td>4</td><td>Operations & Process</td><td>Process mapping lab</td><td>Data exercise A</td></tr>
+            <tr><td>5</td><td>Finance Essentials</td><td>Unit economics lab</td><td>Quiz 1</td></tr>
+            <tr><td>6</td><td>Data‑Driven Decisions</td><td>Dashboard critique</td><td>Memo #3</td></tr>
+            <tr><td>7</td><td>People & Leadership</td><td>Influence simulation</td><td>Peer feedback</td></tr>
+            <tr><td>8</td><td>Innovation & Change</td><td>Design sprint</td><td>Data exercise B</td></tr>
+            <tr><td>9</td><td>ESG & Global Context</td><td>Risk scenario</td><td>Quiz 2</td></tr>
+            <tr><td>10</td><td>Capstone Presentations</td><td>Executive briefing</td><td>Capstone</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="card" aria-labelledby="assessmentTitle">
+        <h3 id="assessmentTitle">Assessment & Grading</h3>
+        <ul>
+          <li>Class participation & cold calls — <strong>20%</strong></li>
+          <li>Short memos (3) — <strong>25%</strong></li>
+          <li>Data exercises (2) — <strong>15%</strong></li>
+          <li>Quizzes (2) — <strong>20%</strong></li>
+          <li>Capstone team project — <strong>20%</strong></li>
+        </ul>
+        <p class="muted">Rubrics and examples are posted on the LMS.</p>
+      </section>
+
+      <section class="card" aria-labelledby="policiesTitle">
+        <h3 id="policiesTitle">Key Policies</h3>
+        <ul>
+          <li><strong>Attendance:</strong> Expected; notify in advance for excused absences.</li>
+          <li><strong>Academic Integrity:</strong> Cite all sources; individual work must be your own.</li>
+          <li><strong>Late Work:</strong> −10% per 24 hours late; extensions require prior approval.</li>
+          <li><strong>Accessibility:</strong> Accommodations available—contact the Disability Services office.</li>
+        </ul>
+      </section>
+
+      <section class="card" aria-labelledby="capstoneTitle">
+        <h3 id="capstoneTitle">Capstone Project</h3>
+        <p>Teams consult for a real or simulated client. Deliverables: a 6–8 page executive memo, an appendix with analysis, and a 10‑minute briefing. Milestones: topic proposal (Wk 3), check‑in (Wk 6), draft (Wk 8), final (Wk 10).</p>
+        <ul>
+          <li>Scope: problem framing, alternatives, recommendation, implementation plan</li>
+          <li>Analysis: market sizing, process/ops, unit economics, risks & mitigations</li>
+          <li>Deliver: concise visuals; plain‑English narrative; action plan</li>
+        </ul>
+      </section>
+
+      <section class="card" aria-labelledby="faqTitle">
+        <h3 id="faqTitle">FAQ</h3>
+        <details>
+          <summary>Do I need prior business experience?</summary>
+          <p>No. We’ll establish shared vocabulary and build from first principles.</p>
+        </details>
+        <details>
+          <summary>What’s the workload like?</summary>
+          <p>Expect 5–7 hours per week outside class for reading, prep, and team work.</p>
+        </details>
+        <details>
+          <summary>How do teams get formed?</summary>
+          <p>We’ll set teams in Week 2 to balance experience, skills, and interests.</p>
+        </details>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> Professor Jim O'Farrell • MBA Introduction Course
+    </footer>
+  </div>
+
+  <script>
+    // Small enhancement: current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
